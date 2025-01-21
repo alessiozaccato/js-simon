@@ -17,11 +17,16 @@ Consigli del giorno:
 let numberList = document.getElementById("numbers-list");
 let answersForm = document.getElementById("answers-form");
 let countDown = document.getElementById("countdown");
-let stringInstructions = document.getElementById("instructions")
-
+let stringInstructions = document.getElementById("instructions");
+let formNumber = document.getElementsByClassName("form-control");
+let goButton = document.querySelector("button");
+let finalMessage = document.getElementById("message");
 
 let random = [];
 randomNumber(random);
+// console.log(random);
+
+
 
 
 // let's create 5 li from js to html
@@ -62,10 +67,45 @@ function cDown() {
         clearInterval(startGame);
     } else {
         countDown.innerHTML = counter--;
-
+        countdown.classList.add("text-danger");
     }
     return counter
 }
+
+// let's collect data from user input
+let userInput = [];
+let result = [];
+
+goButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    for (let i = 0; i < formNumber.length; i++) {
+        userInput.push(formNumber[i].value);
+
+        if (userInput[i] == random[i]) {
+            result.push(userInput[i]);
+
+        }
+
+    }
+    //return the value doing a control on the length of the result array
+    if (result == 0) {
+        finalMessage.innerHTML = "Niente da fare non hai indovinato nessun numero"
+    } else {
+        finalMessage.innerHTML = `Complimenti i numeri da te indovinati sono ${result} e sono ${result.length} `
+        finalMessage.classList.replace("text-danger", "text-success");
+        finalMessage.classList.add("h4");
+    }
+    // console.log(userInput);
+    // console.log(result, result.length);
+
+})
+
+
+
+
+
+
 
 
 
