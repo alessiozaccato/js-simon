@@ -13,12 +13,16 @@ Consigli del giorno:
 > - Individuate gli elementi di cui avete bisogno per realizzare il programma.
 > - Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array" */
 
-// let numberList = document.getElementById("numbers-list");
 
 let numberList = document.getElementById("numbers-list");
+let answersForm = document.getElementById("answers-form");
+let countDown = document.getElementById("countdown");
+let stringInstructions = document.getElementById("instructions")
+
 
 let random = [];
-random = randomNumber(random);
+randomNumber(random);
+
 
 // let's create 5 li from js to html
 for (let i = 0; i < random.length; i++) {
@@ -37,13 +41,31 @@ function randomNumber(randomNumberArray) {
 
         let number = [];
 
-        number[i] = Math.floor(Math.random() * 10) + 1;
+        number[i] = Math.floor(Math.random() * 50) + 1;
 
         randomNumberArray.push(number[i]);
     }
     return randomNumberArray;
 }
 
+//let's do a function to create a countdown for hide my random number
+const startGame = setInterval(cDown, 1000)
+
+let counter = 30;
+
+function cDown() {
+    if (counter == 0) {
+        answersForm.classList.remove("d-none");
+        numberList.classList.add("d-none");
+        stringInstructions.classList.add("d-none");
+        countdown.classList.add("d-none");
+        clearInterval(startGame);
+    } else {
+        countDown.innerHTML = counter--;
+
+    }
+    return counter
+}
 
 
 
