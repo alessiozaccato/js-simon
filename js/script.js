@@ -82,9 +82,8 @@ goButton.addEventListener("click", function (event) {
     for (let i = 0; i < formNumber.length; i++) {
         userInput.push(formNumber[i].value);
 
-        if (userInput[i] == random[i]) {
-            result.push(userInput[i]);
-
+        if (random.includes(parseInt(formNumber[i].value))) {
+            result.push(formNumber[i].value);
         }
 
     }
